@@ -1,6 +1,7 @@
 # https://leetcode.com/problems/valid-parentheses/
 """
-    Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+    Given a string s containing just the characters '(', ')', '{', '}', '[' and
+      ']', determine if the input string is valid.
 
     An input string is valid if:
 
@@ -25,14 +26,15 @@
 
 """
 
+
 class Solution:
-    characters: dict[str, str] = {'(':')', '{':'}', '[':']'}
+    characters: dict[str, str] = {'(': ')', '{': '}', '[': ']'}
 
     def isValid(self, s: str) -> bool:
         opened: list[str] = []
         for i in range(len(s)):
             if s[i] in self.characters.keys():
-               opened.append(s[i])
+                opened.append(s[i])
             elif s[i] in self.characters.values():
                 if opened and self.characters[opened[-1]] == s[i]:
                     del opened[-1]
@@ -46,8 +48,8 @@ class Solution:
 
 if __name__ == '__main__':
     a = Solution()
-    assert a.isValid("()[]{}") == True
-    assert a.isValid("([]{})") == True
-    assert a.isValid("({)[]}") == False
-    assert a.isValid("(){[]}") == True
-    assert a.isValid("((){[]}") == False
+    assert a.isValid("()[]{}") is True
+    assert a.isValid("([]{})") is True
+    assert a.isValid("({)[]}") is False
+    assert a.isValid("(){[]}") is True
+    assert a.isValid("((){[]}") is False
